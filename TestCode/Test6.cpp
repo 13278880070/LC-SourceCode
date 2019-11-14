@@ -39,5 +39,5 @@ struct cityNode{
     }
 int main()
 {
-	cout<<rangeBitwiseAnd(5, 7)<<endl;
+    
 }
