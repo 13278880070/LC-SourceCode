@@ -31,7 +31,6 @@ class Trie_DT
 {
 private:
 	Node *root;
-	Node *node;
 public:
 	Trie_DT() {
 		root = new Node();
@@ -39,7 +38,7 @@ public:
 	~Trie_DT() {}
 	
 	void insert(string word) {
-		node = root;
+		Node *node = root;
 		for(char ch : word) {
 			if(!node->findchar(ch)) {
 				Node *adnode = new Node();
@@ -51,7 +50,7 @@ public:
 	}
 
 	bool startwith(string prefix) {
-		node = root;
+		Node *node = root;
 		for(char ch : prefix) {
 			if(!node->findchar(ch)) return false;
 			node = node->getNext(ch);
@@ -60,7 +59,7 @@ public:
 	}
 
 	bool search(string word) {
-		node = root;
+		Node *node = root;
 		for(char ch : word) {
 			if(!node->findchar(ch)) return false;
 			node = node->getNext(ch);

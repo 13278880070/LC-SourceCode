@@ -50,14 +50,15 @@ public:
 
 class Solution {
 public:
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-    	Graph graph = Graph(numCourses);
+    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+        Graph graph = Graph(numCourses);
+        for(vector<int> vec : prerequisites) {
+        	graph.addEdge(vec[1], vec[0]);
+        }
 
-    	for(vector<int> vec : prerequisites) {
-    		graph.addEdge(vec[1], vec[0]);
-    	}
+        vector<int> retvec;
+        bool re = graph.getSort(retvec);
 
-    	vector<int> vec;
-    	return graph.getsortGraph(vec);
+        return re ? retvec : vector<int>{};
     }
 };

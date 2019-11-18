@@ -8,7 +8,7 @@
 using namespace std;
 
 // 邻接矩阵实现
-class DAG {
+class Graph {
 private:
 	int vnum;
 	queue<int> gqueue;
@@ -18,7 +18,7 @@ private:
 	int count;		// gqueue 辅助判断是否可得到正确的拓扑排序.
 
 public:
-	DAG(int v) {
+	Graph(int v) {
 		this->vnum = v;
 		graph = new int*[v];
 		indegree = new int[v];
@@ -33,7 +33,7 @@ public:
 		this->count = v;
 	}
 
-	~DAG() {
+	~Graph() {
 		delete []indegree;
 		for(int i = 0; i < vnum; i++) delete []graph[i];
 		delete []graph;
@@ -77,7 +77,7 @@ public:
 
 int main()
 {
-	DAG graph = DAG(5);
+	Graph graph = Graph(5);
 	graph.addEdge(0, 1);
 	graph.addEdge(0, 3);
 	graph.addEdge(1, 3);

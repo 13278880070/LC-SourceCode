@@ -27,14 +27,13 @@ public:
 	}
 
 	// 添加 a -> b 的边
-	void addDegree(int a, int b) {
+	void addEdge(int a, int b) {
 		adj[a].push_back(b);
 		indegree[b]++;
 	}
 
 	// 拓扑排序
-	vector<int> getsortGraph() {
-		vector<int> retvec;
+	bool getSort(vector<int> &vec) {
 		for(int i = 0; i < v; i++) {
 			if(!indegree[i]) graphq.push(i);
 		}
@@ -42,7 +41,8 @@ public:
 		while (!graphq.empty()) {
 			int x = graphq.front();
 			graphq.pop();
-			retvec.push_back(x);
+			vec.push_back(x);
+			count--;
 
 			for(int ele : adj[x]) {
 				indegree[ele]--;
@@ -50,22 +50,23 @@ public:
 			}
 		}
 
-		return retvec;
+		return !count;
 	}
 };
 
 int main()
 {
 	Graph graph = Graph(5);
-	graph.addDegree(0, 1);
-	graph.addDegree(0, 3);
-	graph.addDegree(1, 3);
-	graph.addDegree(1, 2);
-	graph.addDegree(2, 4);
-	graph.addDegree(3, 2);
-	graph.addDegree(3, 4);
+	graph.addEdge(0, 1);
+	graph.addEdge(0, 3);
+	graph.addEdge(1, 3);
+	graph.addEdge(1, 2);
+	graph.addEdge(2, 4);
+	graph.addEdge(3, 2);
+	graph.addEdge(3, 4);
 
-	vector<int> vec = graph.getsortGraph();
+	vector<int> vec;
+	graph.getSort(vec);
 
 	for(int ele : vec) cout<<ele<<" ";
 }

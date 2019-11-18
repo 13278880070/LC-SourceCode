@@ -19,7 +19,7 @@ void qsort(vector<int>& nums, int l, int r) {
 
 int main()
 {
-	vector<int> vec = {5,1,1,2,0,0};
+	vector<int> vec = {2,2};
 	qsort(vec, 0, vec.size()-1);
 	for(int ele : vec) {
 		cout<<ele<<" ";

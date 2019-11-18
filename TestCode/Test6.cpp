@@ -39,5 +39,7 @@ struct cityNode{
     }
 int main()
 {
-    
+    int x;
+    cin>>x;
+    cout<<x<<endl<<x*(int)log2(x)<<endl;
 }
