@@ -22,5 +22,17 @@ struct Compare
 int main()
 {
 	vector<TreeNode*> vec;
+	// 使用 Compare 定义队列优先级
 	priority_queue<TreeNode*, vector<TreeNode*>, Compare> q;
+
+
+	priority_queue<int, vector<int>, less<int>> q2;		// 最大堆
+	priority_queue<int, vector<int>, greater<int>> q3;	// 最小堆
+
+	for (int i = 0; i < 5; i++) {
+		q2.push(i);
+		q3.push(i);
+	}
+	// 输出: 4, 0
+	cout<<q2.top()<<"  "<<q3.top()<<endl;
 }
