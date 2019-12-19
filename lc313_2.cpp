@@ -10,7 +10,7 @@ public:
         ugly[0] = 1;
         for(int i = 1; i < n; i++) {
         	ugly[i] = INT_MAX;
-
+            // 找出下一个最下的 UglyNumber.
         	for(int j = 0; j < len; j++) {
         		// 将最后更新 count[] 的操作延迟到 -下一次计算 之前-.
         		if (ugly[count[j]] * primes[j] == ugly[i-1]) {

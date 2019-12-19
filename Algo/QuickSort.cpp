@@ -3,24 +3,29 @@
 
 using namespace std;
 
-void qsort(vector<int>& nums, int l, int r) {
-	if(l >= r) return ;
-	int i = l, j = r;
-	while (l < r) {
-		while (nums[l] <= nums[i] && l < j) l++;
-		while (nums[r] > nums[i] && r > i) r--;
-		if(l > r) break;
-		swap(nums[l], nums[r]);
-	}
-	swap(nums[i], nums[r]);
-	qsort(nums, i, r-1);
-	qsort(nums, l, j);
+void QuickSort(vector<int>& nums, int left, int right) {
+    if (left >= right) return ;
+    int l = left, r = right, pivot = nums[l];
+    while (l <= r) {
+        if (nums[l] > pivot && nums[r] < pivot) {
+            swap(nums[l++], nums[r--]);
+        }
+        while (l <= r && nums[l] <= pivot) {
+            l++;
+        }
+        while (l <= r && nums[r] >= pivot) {
+            r--;
+        }
+    }
+    swap(nums[left], nums[r]);
+    QuickSort(nums, left, r-1);
+    QuickSort(nums, r+1, right);
 }
 
 int main()
 {
-	vector<int> vec = {2,2};
-	qsort(vec, 0, vec.size()-1);
+	vector<int> vec = {7, 5, 0, 3, 2, 6, 9, 1, 0, 2};
+	QuickSort(vec, 0, vec.size()-1);
 	for(int ele : vec) {
 		cout<<ele<<" ";
 	}

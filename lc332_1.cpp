@@ -19,6 +19,7 @@ public:// 以 "JFK" 开始.
 		while (!stk.empty()) {
 			str = stk.top();
 			if (map[str].size() == 0) {
+				// 没有邻近的地点了, 说明当前地点为最后一个目的地。
 				retvec.push_back(str);
 				stk.pop();
 			} else {
@@ -26,7 +27,7 @@ public:// 以 "JFK" 开始.
 				map[str].erase(map[str].begin());
 			}
 		}
-		
+		// 目的地 => 起始地址
 		reverse(retvec.begin(), retvec.end());
         return retvec;
 		
